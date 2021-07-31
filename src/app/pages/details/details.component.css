@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
-* Start Bootstrap - Shop Homepage v5.0.2 (https://startbootstrap.com/template/shop-homepage)
+* Start Bootstrap - Shop Item v5.0.2 (https://startbootstrap.com/template/shop-item)
 * Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-item/blob/master/LICENSE)
 */
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
@@ -31,7 +31,7 @@
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
-  --bs-dark: #5a2f43;
+  --bs-dark: #212529;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
@@ -55,7 +55,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #5a2f43;
+  color: #212529;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1255,18 +1255,19 @@ progress {
   }
 
   .col-md-4 {
-    flex: 0 0 auto;
-    width: 33.33333333%;
+    flex: 1;
+    width: 70%;
   }
 
   .col-md-5 {
-    flex: 0 0 auto;
-    width: 41.66666667%;
+    flex: 2;
+    width: 50%;
   }
 
   .col-md-6 {
-    flex: 0 0 auto;
+    flex:1;
     width: 50%;
+    /* display: inline-block; */
   }
 
   .col-md-7 {
@@ -6925,8 +6926,8 @@ textarea.form-control-lg {
 }
 
 .my-5 {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+  margin-top: 4rem !important;
+  margin-bottom: 5rem !important;
 }
 
 .my-auto {
@@ -7434,11 +7435,7 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-  background-color: #5a2f43 !important;
-}
-
-.bg-middledark{
-    background-color: #623F4F !important;
+  background-color: #212529 !important;
 }
 
 .bg-body {
