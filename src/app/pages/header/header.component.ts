@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
+import { Product } from 'src/app/product';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,9 @@ import { CartService } from 'src/app/cart.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public cartCounter: any;
-
+  cartCounter: any;
+  // items: Product[] =[];
+  c = 0;
 //  cartCounter:any;
   constructor(private cartService: CartService) { 
     // this.cartCounter$ = this.cartService.cartCount$
@@ -19,10 +21,17 @@ export class HeaderComponent implements OnInit {
     //   }
     // )
   }
+  // updateCartCount(){
+  //   this.items = this.cartService.getItems;
+  //   if(this.items.length)
+  //   for(let item of this.items){
+  //     this.c+=item.quantity;
+  //   }
 
+  // }
   
   ngOnInit(): void {
-
+    // this.updateCartCount()
   }
   ngOnDestroy() {
     // this.cartCounter.unsubscribe(); // important to unsubscribe

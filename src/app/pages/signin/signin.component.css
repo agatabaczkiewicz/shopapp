@@ -26,7 +26,12 @@ html {
     margin: 40px 8px 10px 8px; 
     color: #cccccc;
   }
-  
+  .form-control-feedback {  
+    display: block;
+    text-align: left;
+    color: #a94442;
+    font-size: smaller;
+}
   
   
   /* STRUCTURE */
@@ -78,7 +83,12 @@ html {
     border-bottom: 2px solid #5fbae9;
   }
   
-  
+  input.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  input.ng-invalid.ng-touched {
+    border-left: 5px solid #a94442;
+  }
   
   /* FORM TYPOGRAPHY*/
   

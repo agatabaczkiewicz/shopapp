@@ -27,7 +27,7 @@ export class CartService {
 
  
 
-  getItems() {
+  getItems(){
     return this.items;
   }
 

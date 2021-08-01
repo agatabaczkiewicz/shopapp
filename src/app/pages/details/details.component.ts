@@ -2,7 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { Product } from 'src/app/product';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../product.service';
 import { CartService } from 'src/app/cart.service';
 
@@ -19,7 +19,8 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private location: Location,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +36,10 @@ export class DetailsComponent implements OnInit {
   addToCart(product: Product) {
     product.quantity=this.c;
     this.cartService.addToCart(product);
-    this.cartService.setCartCount(this.c);
-    this.c+=1;
+    this.toastr.success('Added to cart');
+    // this.c+=this.c;
+    // this.cartService.setCartCount(this.c);
+    
     // window.alert('Your product has been added to the cart!');
   }
 
@@ -44,5 +47,6 @@ export class DetailsComponent implements OnInit {
      this.c=event.target.value;
     
   }
+  
 
 }

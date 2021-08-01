@@ -11,6 +11,9 @@ import { ProductComponent } from './products/product/product.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,11 @@ import { SigninComponent } from './pages/signin/signin.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,15 +10,25 @@
   
       <!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second" name="name" placeholder="Name">
-        <input type="text" id="login" class="fadeIn second" name="surname" placeholder="Surname">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Repeat password">
-        <input type="submit" class="fadeIn fourth mt-2" value="Sign up">
+        <div>
+        <input type="text" id="login" class="fadeIn second" name="name" [formControl]="name" placeholder="Name">
+        <!-- <label *ngIf="name.invalid" [ngClass] = "'error'"> Name required with max 15 character. </label> -->
+      </div>
+        <input type="text" id="login" class="fadeIn second" name="surname" [formControl]="surname" placeholder="Surname">
+        <input type="text" id="login" class="fadeIn second" name="login" [formControl]="email" placeholder="Email">
+        <div class="form-control-feedback ms-5" *ngIf="email.errors && (email.touched)">
+        <p *ngIf="email.errors.pattern">The email address must contain at least the @ character</p></div>
+        <input type="password" id="password" class="fadeIn third" name="login" [formControl]="password" placeholder="Password">
+        <input type="password" id="password" class="fadeIn third" name="login" [formControl]="passwordRepeat" placeholder="Repeat password">
+        <p class="mt-1 mb-0 form-control-feedback ms-5" *ngIf="(name.invalid&&name.touched)|| (surname.invalid&&surname.touched) || (email.invalid&&email.touched) || (passwordRepeat.invalid&&passwordRepeat.touched) || (password.invalid&&password.touched) "
+       [ngClass] = "'error'"> These fields must be completed </p> 
+       <p class="mt-1 mb-0 form-control-feedback ms-5" *ngIf="!pass"
+       [ngClass] = "'error'"> The passwords do not match </p> 
+       <br>
+        <input class ="mt-1" type="submit" class="fadeIn fourth mt-2" (click) = "onSignIn()" value="Sign up">
       </form>
-  
-      <!-- Remind Passowrd
+      
+      <!-- Remind Passowrd|| surname.invalid  || email.invalid  " 
       <div id="formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
       </div>
