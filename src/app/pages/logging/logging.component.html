@@ -10,9 +10,9 @@
   
       <!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input type="text" id="login" class="fadeIn second" name="login" [formControl]="email" placeholder="Email">
+        <input type="password" id="password" class="fadeIn third" name="login" [formControl]="password" placeholder="Password">
+        <input type="submit" class="fadeIn fourth" (click) = "onLogIn()" value="Log In">
       </form>
   
       <!-- Remind Passowrd -->

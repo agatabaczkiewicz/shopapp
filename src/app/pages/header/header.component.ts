@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart.service';
 import { Product } from 'src/app/product';
+import { TokenStorageService } from 'src/app/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,13 @@ import { Product } from 'src/app/product';
 })
 export class HeaderComponent implements OnInit {
   cartCounter: any;
+  isLoggedIn = false;
+  username?: string;
   // items: Product[] =[];
   c = 0;
 //  cartCounter:any;
-  constructor(private cartService: CartService) { 
+  constructor(private cartService: CartService,
+    private tokenStorageService: TokenStorageService) { 
     // this.cartCounter$ = this.cartService.cartCount$
     // this.cartCounter = this.cartService.cartCount$.subscribe(
     //   count => {
@@ -32,9 +36,21 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
     // this.updateCartCount()
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.username = user;
+      console.log(this.username)
+      
+    }
   }
+    
   ngOnDestroy() {
     // this.cartCounter.unsubscribe(); // important to unsubscribe
+  }
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
 }
