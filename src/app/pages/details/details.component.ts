@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../product.service';
 import { CartService } from 'src/app/cart.service';
+import { Iproducts } from 'src/app/data/iproducts';
 
 @Component({
   selector: 'app-details',
@@ -13,7 +14,11 @@ import { CartService } from 'src/app/cart.service';
 })
 export class DetailsComponent implements OnInit {
 
-  product: Product | undefined;
+  product: Iproducts | undefined;
+  productCard: Product = { id: 0,
+    name: "",
+    price: 0,
+    quantity: 0};
   c =1;
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +29,17 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProduct()
+    this.getProductInfo()
   }
 
-  getProduct(): void {
+  getProductInfo(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productService.getProduct(id)
       .subscribe(product => this.product = product);
+    this.productCard = { id: this.product?.id as number,
+      name: this.product?.name as string,
+      price: this.product?.price as number,
+      quantity: 0}
   }
 
   addToCart(product: Product) {

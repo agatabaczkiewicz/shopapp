@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/app/product';
 //import { PRODUCTS } from 'src/app/mocks/mock-product';
 import { Observable, of } from 'rxjs';
-import { Iproducts } from './data/products';
+import { Iproducts } from './data/iproducts';
 
 
 //const  PRODUCTS: Product[] = [
@@ -20,8 +20,8 @@ export class ProductService {
 ];
 
 IPRODUCTS: Iproducts[] = [
-  { id: 19, name: 'Magma', price: 40,description: 'XD', image: 'x' },
-{id: 20, name: 'Magma', price: 40,description: 'XD', image: 'x' }
+//   { id: 19, name: 'Magma', price: 40,description: 'XD', image: 'x' },
+// {id: 20, name: 'Magma', price: 40,description: 'XD', image: 'x' }
 ];
 
   constructor() { }
@@ -33,12 +33,12 @@ getProducts(): Iproducts[] {
 }
 
 
-getProduct(id: number): Observable<Product> {
-  const product = this.PRODUCTS.find(p => p.id === id)!;
+getProduct(id: number): Observable<Iproducts> {
+  const product = this.IPRODUCTS.find(p => p.id === id)!;
   return of(product);
 }
 
-public saveProducts(products: Iproducts[]): void {
+public saveProductsFromResponse(products: Iproducts[]): void {
   this.IPRODUCTS = products;
 
 }

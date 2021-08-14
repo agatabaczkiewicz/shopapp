@@ -3,7 +3,7 @@ import { catchError } from 'rxjs/internal/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Iproducts } from './data/products';
+import { Iproducts } from './data/iproducts';
 
 
 
@@ -42,7 +42,7 @@ LogIn(input: any): Observable<any>{
   )
 }
 
-getProducts(): Observable<Iproducts[]>{
+getProductsRequest(): Observable<Iproducts[]>{
   return this.httpclient.get<Iproducts[]>("http://localhost:3000/products", this._options)
   .pipe(
     catchError((err) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/rest.service';
-import { Iproducts } from 'src/app/data/products';
+import { Iproducts } from 'src/app/data/iproducts';
 import { PRODUCTS } from 'src/app/mocks/mock-product';
 import { ProductService } from 'src/app/product.service';
 
@@ -12,42 +12,46 @@ import { ProductService } from 'src/app/product.service';
 })
 export class MainpaigeComponent implements OnInit {
 
-  public products:any[] = [];
+  public products: any[] = [];
 
   constructor(private toastr: ToastrService,
     private restService: RestService,
     private productService: ProductService
-    ) { }
-    
+  ) { }
+
 
   ngOnInit(): void {
-    this.getProducts();
-    console.log(this.products)
-    
-}
+    // this.getProductsFromServer();
+    // console.log(this.products)
 
-getProducts(){
-  this.restService.getProducts()
-  .subscribe(
-    response => {      
-      if (response != null)
-    {
-    console.log(response);
-    //this.products = response;
-    this.productService.saveProducts(response);
-    }
-    else{
-      this.toastr.error('Wrong');
-    }
-    },
-    (error) => {              //Error callback
-      this.toastr.error('Wrong data!');
-      
-    }
-  )
-  
+  }
+
+  ngOnChanges():void {
+    // this.getProductsFromServer();
+    // console.log(this.products)
+  }
+
+  getProductsFromServer() {
+    this.restService.getProductsRequest()
+      .subscribe(
+        response => {
+          if (response != null) {
+            console.log(response);
+            //this.products = response;
+            this.productService.saveProductsFromResponse(response);
+          }
+          else {
+            this.toastr.error('Wrong');
+          }
+        },
+        (error) => {              //Error callback
+          this.toastr.error('Wrong data!');
+
+        }
+      )
 
 
-}
+
+  }
 
 }
